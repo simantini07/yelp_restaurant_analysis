@@ -1,8 +1,7 @@
-cat > README.md << 'EOF'
 # Yelp Restaurant Success Analysis
 
 ## 📖 Overview
-A data mining project analyzing the Yelp Open Dataset to uncover patterns in restaurant reviews, ratings, and business survival. The project applies multiple data mining techniques — including text mining, clustering, graph mining, anomaly detection, topic modeling, and sentiment analysis — to investigate what drives restaurant success and closure.
+A data mining project analyzing the Yelp Open Dataset to uncover patterns in restaurant reviews, ratings, and business survival. The project applies multiple data mining techniques — including text mining, clustering, graph mining, anomaly detection, topic modeling, and sentiment analysis to investigate what drives restaurant success and closure.
 
 This project is part of a graduate-level Data Mining course.
 
