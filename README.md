@@ -1,35 +1,99 @@
-# Yelp Restaurant Success Analysis
+# Yelp Restaurant Survival Signals (Philadelphia)
 
-## 📖 Overview
-A data mining project analyzing the Yelp Open Dataset to uncover patterns in restaurant reviews, ratings, and business survival. The project applies multiple data mining techniques — including text mining, clustering, graph mining, anomaly detection, topic modeling, and sentiment analysis to investigate what drives restaurant success and closure.
+This project studies a practical question: **why do some restaurants close even when star ratings still look fine?**  
+Using Yelp Open Dataset data for Philadelphia restaurants, the analysis compares baseline numeric features against richer signals from review text, sentiment trends over time, and reviewer behavior/network structure.
 
-This project is part of a graduate-level Data Mining course.
+👉 **Start here: `main_notebook.ipynb`**
 
-## 📊 Dataset
-- **Source**: [Yelp Open Dataset](https://www.yelp.com/dataset)
-- **Size**: ~150K businesses, ~7M reviews across multiple JSON files
-- **Scope**: Initial EDA focuses on Philadelphia restaurants (~7,575 businesses, ~300K reviews), with potential expansion to additional cities
-- **Key Files Used**: `business.json`, `review.json`, `user.json`
+🎥 **Project video:** (https://www.youtube.com/watch?v=V9y9EpvLQzc)
 
-> **Note**: The dataset is not included in this repository due to size and licensing constraints. Download it from [Yelp](https://www.yelp.com/dataset) and place the files in a `yelp_dataset/` directory.
+## Research Questions
 
-## 🔍 Research Questions
-1. Can latent topics in restaurant reviews predict whether a restaurant will close?
-2. Do restaurants with distinct review sentiment trajectories have different survival outcomes?
-3. Can clustering restaurants by review text features reveal distinct "success profiles"?
-4. Do reviewer characteristics systematically influence ratings?
-5. Can user-business interaction graphs reveal community structures or anomalous reviewing behavior?
+1. **RQ1 (Text signal):** Does review text (TF-IDF and topic features) improve closure prediction beyond numeric baseline features?
+2. **RQ2 (Trajectory signal):** Do quarterly sentiment trajectories differ between open and closed restaurants?
+3. **RQ3 (Reviewer/network signal):** Do anomalous reviewer exposure and graph-based reviewer centrality align with higher closure risk?
 
-## ⚙️ Techniques
+## Data
 
-| Technique | Type |
-|-----------|------|
-| TF-IDF + Document Clustering | Course (Text Mining, Clustering) |
-| Topic Modeling (LDA/NMF) | Beyond-Course |
-| Sentiment Analysis (VADER) | Beyond-Course |
-| Classification (is_open prediction) | Course (Large-Scale ML) |
-| Graph Mining (User-Business Network) | Course (Graph Mining) |
-| Anomaly Detection on Reviewers | Course (Anomaly Detection) |
+- **Dataset:** [Yelp Open Dataset](https://www.yelp.com/dataset)
+- **Files used:** business, review, and user-level information (as needed by the notebook pipeline)
+- **Geographic scope:** Philadelphia restaurants only
+- **Project cap:** first 300,000 matching reviews for computational reproducibility
 
-## 📁 Repository Structure
+The dataset is not committed to this repo because of size and licensing.  
+After downloading, place files under:
 
+`yelp_dataset/`
+
+Expected main files include:
+- `yelp_academic_dataset_business.json`
+- `yelp_academic_dataset_review.json`
+- `yelp_academic_dataset_user.json`
+
+## Preprocessing Summary
+
+- Filter businesses to Philadelphia + categories containing Restaurant
+- Keep only reviews tied to filtered restaurant `business_id`s
+- Cap matching reviews for stable runtime
+- Text preparation for RQ1 modeling (minimum length filters, TF-IDF/topic features)
+- Sentiment scoring per review (VADER with star-based fallback), then quarterly aggregation per business
+- Reviewer feature engineering for anomaly detection and graph aggregation
+
+## Reproducibility
+
+This project was developed in a notebook workflow and is reproducible from this repository.
+
+1. Download Yelp data and place it in `yelp_dataset/` as described above.
+2. Create and activate a Python environment.
+3. Install dependencies:
+   - `pip install -r requirements.txt`
+4. Open and run:
+   - `main_notebook.ipynb` (primary deliverable)
+5. Optional progression notebooks:
+   - `checkpoints/checkpoint_1.ipynb`
+   - `checkpoints/checkpoint_2.ipynb`
+
+## Key Dependencies
+
+- Python `3.13.5`
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+- seaborn
+- nltk (VADER)
+- statsmodels
+- pymannkendall
+- gensim
+- bertopic
+- networkx
+
+For exact versions, see `requirements.txt`.
+
+## Repository Structure
+
+```text
+data_mining_project/
+├── main_notebook.ipynb
+├── requirements.txt
+├── README.md
+├── checkpoints/
+│   ├── checkpoint_1.ipynb
+│   └── checkpoint_2.ipynb
+├── assets/
+│   ├── 01_city_distribution.png
+│   └── 02_star_distributions.png
+├── scripts/
+│   └── patch_rq_extensions.py
+├── yelp_dataset/                  # local data folder (not for GitHub commit)
+├── 837005056_project.ipynb        # original notebook snapshot
+├── 837005056_project_ck2.ipynb    # original notebook snapshot
+└── 837005056_project_final_submission.ipynb
+```
+
+## Results Summary
+
+- Numeric baseline provides strong closure prediction performance.
+- Text/topic features improve interpretability and provide complementary signal, but do not always outperform baseline AUC in every run.
+- Sentiment trajectory tests show meaningful open-vs-closed trend differences.
+- Reviewer anomaly exposure and graph-based reviewer centrality provide additional risk-pattern context for closure analysis.
