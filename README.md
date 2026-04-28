@@ -109,6 +109,17 @@ data_mining_project/
 ├── checkpoints/
 │   ├── checkpoint_1.ipynb          # initial EDA & dataset framing
 │   └── checkpoint_2.ipynb          # research-question formation + smoke tests
+├── assets/                         # 🖼️ exported charts & figures (PNG)
+│   ├── 01_eda_4panel_overview.png
+│   ├── 02_baseline_roc.png
+│   ├── 03_rq1a_tfidf_topterms.png
+│   ├── 04_rq1b_topic_models_auc.png
+│   ├── 05_rq2_sentiment_trajectory.png
+│   ├── 06_rq3_quartile_and_kde.png
+│   ├── 07_rq3_reviewer_network.png
+│   ├── 08_rq3_pagerank_x_anomaly_heatmap.png
+│   ├── 09_rq3_risk_decile_and_lift.png
+│   └── ckpt{1,2}_*.png             # checkpoint-notebook figures
 └── yelp_dataset/                   # local data folder (gitignored, not on GitHub)
     ├── yelp_academic_dataset_business.json
     ├── yelp_academic_dataset_review.json
