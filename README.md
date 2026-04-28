@@ -1,4 +1,4 @@
-# 🍽️ Yelp Restaurant Survival Signals — Philadelphia
+# 🍽️ Topic, Trend & Reviewer Graph: A Multi-Lens Closure Risk Model for Philadelphia Restaurants
 
 > **Why do some restaurants close even when their star ratings still look fine?**
 
