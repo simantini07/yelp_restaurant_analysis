@@ -119,6 +119,9 @@ data_mining_project/
 │   ├── 07_rq3_reviewer_network.png
 │   ├── 08_rq3_pagerank_x_anomaly_heatmap.png
 │   ├── 09_rq3_risk_decile_and_lift.png
+│   ├── 10_rq2_yearly_median_bootstrap_ci.png
+│   ├── 11_rq2_slope_x_volume_atlas.png
+│   ├── 12_rq3_super_user_radar.png
 │   └── ckpt{1,2}_*.png             # checkpoint-notebook figures
 └── yelp_dataset/                   # local data folder (gitignored, not on GitHub)
     ├── yelp_academic_dataset_business.json
