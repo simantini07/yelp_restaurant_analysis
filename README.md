@@ -2,11 +2,11 @@
 
 > **Why do some restaurants close even when their star ratings still look fine?**
 
-Stars are a single noisy number — they collapse food quality, service, price, and trend into one digit. This project asks whether **review text, sentiment trends over time, and reviewer-network behaviour** can do a better job of predicting (and *explaining*) restaurant closure than the star average alone. Using **5,856 Philadelphia restaurants** and **300,000 Yelp reviews**, we layer three independent evidence streams — *what* people write, *how* their sentiment moves, and *who* writes the reviews — and combine them into a single closure-risk model that takes prediction from baseline AUC ≈ 0.72 to **AUC ≈ 0.94**, while keeping every signal interpretable.
+Stars are a single noisy number they collapse food quality, service, price, and trend into one digit. This project asks whether **review text, sentiment trends over time, and reviewer-network behaviour** can do a better job of predicting restaurant closure than the star average alone. Using **5,856 Philadelphia restaurants** and **300,000 Yelp reviews**, we layer three independent evidence streams — *what* people write, *how* their sentiment moves, and *who* writes the reviews and combine them into a single closure-risk model that takes prediction from baseline AUC ≈ 0.72 to **AUC ≈ 0.94**, while keeping every signal interpretable.
 
 🎥 **Project video:** <https://www.youtube.com/watch?v=V9y9EpvLQzc>
 
-👉 **Main deliverable:** [`main_notebook.ipynb`](./main_notebook.ipynb) — read this end-to-end.
+👉 **Main deliverable:** [`main_notebook.ipynb`](./main_notebook.ipynb)
 
 ---
 
@@ -16,7 +16,7 @@ Stars are a single noisy number — they collapse food quality, service, price, 
 |---|----------|--------|---------|
 | **RQ1** | Does *what* customers write predict closure beyond stars? | Review text | TF–IDF + Logistic Regression, **LDA topics**, **BERTopic-style neural embeddings**, hybrid `HistGradientBoostingClassifier` |
 | **RQ2** | Are closing restaurants quietly trending downward over time? | Sentiment trajectory | **VADER** sentiment → quarterly series → **Mann–Kendall** trend test + Mann–Whitney U on slopes |
-| **RQ3** | Does it matter *who* the reviewers are? | Reviewer network + behaviour | Bipartite reviewer↔business graph + **PageRank**, **Isolation Forest** on `user.json`-enriched 15-feature reviewer profiles |
+| **RQ3** | Does it matter *who* the reviewers are? | Reviewer network + behaviour | Bipartite reviewer↔business graph + **PageRank**, **Isolation Forest** - enriched 15-feature reviewer profiles |
 
 ---
 
@@ -119,6 +119,6 @@ data_mining_project/
 
 ## 🎯 Results summary
 
-> Three independent evidence streams — review text, sentiment trajectory, and reviewer-network behaviour — each carry real closure signal beyond stars, and together they push closure prediction from **AUC ≈ 0.72** (numeric baseline) to **AUC ≈ 0.94** (hybrid). Closing restaurants drift downward in sentiment over time (*p* < 10⁻⁶), and restaurants disproportionately reviewed by Yelp super-users close **+13.5 pp** more often than baseline. The combined signal is more *explainable* and more *forward-looking* than the star average alone — exactly the kind of layered evidence a platform, owner, or investor would want.
+> Three independent evidence streams — review text, sentiment trajectory, and reviewer-network behaviour each carry real closure signal beyond stars, and together they push closure prediction from **AUC ≈ 0.72** (numeric baseline) to **AUC ≈ 0.94** (hybrid). Closing restaurants drift downward in sentiment over time (*p* < 10⁻⁶), and restaurants disproportionately reviewed by Yelp super-users close **+13.5 pp** more often than baseline. The combined signal is more *explainable* and more *forward-looking* than the star average alone, exactly the kind of layered evidence a platform, owner, or investor would want.
 
 Full methodology, charts, statistical tests, limitations, and future work are documented in [`main_notebook.ipynb`](./main_notebook.ipynb).
