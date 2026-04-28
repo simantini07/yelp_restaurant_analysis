@@ -2,7 +2,7 @@
 
 > **Why do some restaurants close even when their star ratings still look fine?**
 
-Stars are a single noisy number they collapse food quality, service, price, and trend into one digit. This project asks whether **review text, sentiment trends over time, and reviewer-network behaviour** can do a better job of predicting restaurant closure than the star average alone. Using **5,856 Philadelphia restaurants** and **300,000 Yelp reviews**, we layer three independent evidence streams — *what* people write, *how* their sentiment moves, and *who* writes the reviews and combine them into a single closure-risk model that takes prediction from baseline AUC ≈ 0.72 to **AUC ≈ 0.94**, while keeping every signal interpretable.
+Stars are a single noisy number — they collapse food quality, service, price, and trend into one digit. This project asks whether **review text, sentiment trends over time, and reviewer-network behaviour** can do a better job of predicting restaurant closure than the star average alone. Using **5,856 Philadelphia restaurants** and **300,000 Yelp reviews**, we layer three independent evidence streams — *what* people write, *how* their sentiment moves, and *who* writes the reviews and combine them into a single closure-risk model that takes prediction from baseline AUC ≈ 0.72 to **AUC ≈ 0.94**, while keeping every signal interpretable.
 
 🎥 **Project video:** <https://www.youtube.com/watch?v=V9y9EpvLQzc>
 
@@ -63,9 +63,9 @@ yelp_dataset/
 This project was developed locally in **Jupyter / VS Code** but runs cleanly in **Google Colab** as well. Recommended order:
 
 1. **Download Yelp data** from <https://www.yelp.com/dataset> and place the three JSON files inside `yelp_dataset/` (see structure above).
-2. **Set up the environment.** Python ≥ 3.11 is recommended.
+2. **Set up the environment.** This project was developed and tested on **Python 3.11** (Google Colab default; also runs on 3.13 locally).
    ```bash
-   python -m venv .venv && source .venv/bin/activate
+   python3.11 -m venv .venv && source .venv/bin/activate
    pip install -r requirements.txt
    ```
    Some libraries (e.g. `gensim`, `bertopic`, `sentence-transformers`) are also installed inline at the top of `main_notebook.ipynb` via `%pip install`, so a fresh Colab kernel works out of the box.
@@ -84,7 +84,7 @@ The big-rock packages (full pin list lives in [`requirements.txt`](./requirement
 
 | Package | Version | Used for |
 |---|---|---|
-| `python` | 3.11+ | runtime |
+| `python` | **3.11** (Colab) / 3.13 (local) | runtime |
 | `pandas` | 2.x | data wrangling |
 | `numpy` | 2.1 | arrays / math |
 | `scikit-learn` | 1.4+ | Logistic Regression, Isolation Forest, `HistGradientBoostingClassifier`, PCA, metrics |
